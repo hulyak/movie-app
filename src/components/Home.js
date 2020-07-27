@@ -53,6 +53,7 @@ const Home = () => {
   
   return (
     <>
+      {/* don't show when user searches for a movie */}
       { !searchTerm && (
         <HeroImage image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.heroImage.backdrop_path}`}
           title={state.heroImage.original_title}
