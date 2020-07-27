@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { API_URL, API_KEY } from '../../config';
+import { POPULAR_BASE_URL } from '../../config';
 
 export const useHomeFetch = () => {
   const [state, setState] = useState({ movies: [] });
@@ -36,9 +36,9 @@ export const useHomeFetch = () => {
     setLoading(false);
   };
 
-  //TRIGGER FETCH MOVIES, this will trigger eveytime we run, we need only when we start the app and mount the app
+  //TRIGGER FETCH MOVIES, this will trigger every time we run, we need only when we start the app and mount the app
   useEffect(() => {
-    fetchMovies(`${API_URL}movie/popular?api_key=${API_KEY}`);
+    fetchMovies(POPULAR_BASE_URL);
   }, []); //dependency array
 
   return [{ state, loading, error }, fetchMovies];
