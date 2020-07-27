@@ -21,15 +21,16 @@ import {useHomeFetch} from './hooks/useHomeFetch'
 import NoImage from './images/no_image.jpg';
 
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  
   const [
     {
       state,
       // state : {movies, currrentPage, totalPages, heroImage},  //destructuring state
       loading, 
       error
-    } , fetchMovies] = useHomeFetch();
+    } , fetchMovies] = useHomeFetch(searchTerm);
 
-  const [searchTerm, setSearchTerm] = useState("");
 
   //if we have a search word, show user search 
   const searchMovies = search => {

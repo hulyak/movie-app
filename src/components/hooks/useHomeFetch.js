@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { POPULAR_BASE_URL } from '../../config';
 
-export const useHomeFetch = () => {
+export const useHomeFetch = (searchTerm) => {
   const [state, setState] = useState({ movies: [] });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -38,8 +38,24 @@ export const useHomeFetch = () => {
 
   //TRIGGER FETCH MOVIES, this will trigger every time we run, we need only when we start the app and mount the app
   useEffect(() => {
-    fetchMovies(POPULAR_BASE_URL);
+    if (sessionStorage.homeState) {
+      // console.log('grabbing from session storage');
+      setState(JSON.parse(sessionStorage.homeState));
+      setLoading(false);
+    } else {
+      // console.log('grabbing from api');
+      fetchMovies(POPULAR_BASE_URL);
+    }
   }, []); //dependency array
 
+  useEffect(
+    () => {
+      if (!searchTerm) {
+        console.log('session storage');
+        sessionStorage.setItem('homeState', JSON.stringify(state));
+      }
+    },
+    [searchTerm, state]
+  );
   return [{ state, loading, error }, fetchMovies];
 };
