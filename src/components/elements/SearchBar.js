@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef} from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 
@@ -7,13 +7,13 @@ import {
   StyledSearchBarContent,
 } from '../styles/StyledSearchBar';
 
-const SearchBar = ({ callback }) => {
+const SearchBar = ({callback}) => {
   const [state, setState] = useState('');
   const timeOut = useRef(null);
 
   const doSearch = (event) => {
     // console.log(event.target.value);
-    const { value } = event.target;
+    const {value} = event.target;
 
     clearTimeout(timeOut.current);
     setState(value);

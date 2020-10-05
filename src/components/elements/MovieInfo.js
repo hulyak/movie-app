@@ -1,22 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NoImage from '../images/no_image.jpg';
-import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config';
+import {IMAGE_BASE_URL, POSTER_SIZE} from '../../config';
 import MovieThumb from './MovieThumb';
 
-import { StyledMovieInfo } from '../styles/StyledMovieInfo';
+import {StyledMovieInfo} from '../styles/StyledMovieInfo';
 
-const MovieInfo = ({ movie }) => (
+const MovieInfo = ({movie}) => (
   <StyledMovieInfo backdrop={movie.backdrop_path}>
     <div className="movieinfo-content">
       <div className="movieinfo-thumb">
         <MovieThumb
           image={
-            movie.poster_path ? (
-              `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
-            ) : (
-              NoImage
-            )
+            movie.poster_path
+              ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+              : NoImage
           }
           clickable={false}
         />

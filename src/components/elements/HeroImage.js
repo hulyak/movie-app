@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledHeroImage } from '../styles/StyledHeroImage';
+import {StyledHeroImage} from '../styles/StyledHeroImage';
 
-const HeroImage = ({ image, title, text }) => (
+const HeroImage = ({image, title, text}) => (
   <StyledHeroImage image={image}>
     <div className="heroimage-content">
       <div className="heroimage-text">

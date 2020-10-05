@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledLoadMoreBtn } from '../styles/StyledLoadMoreBtn';
+import {StyledLoadMoreBtn} from '../styles/StyledLoadMoreBtn';
 
-const LoadMoreBtn = ({ text, callback }) => (
+const LoadMoreBtn = ({text, callback}) => (
   <StyledLoadMoreBtn type="button" onClick={callback}>
     {text}
   </StyledLoadMoreBtn>

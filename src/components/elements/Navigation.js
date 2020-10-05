@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from '@reach/router';
+import {Link} from '@reach/router';
 
-import { StyledNavigation } from '../styles/StyledNavigation';
+import {StyledNavigation} from '../styles/StyledNavigation';
 
-const Navigation = ({ movie }) => (
+const Navigation = ({movie}) => (
   <StyledNavigation>
     <div className="navigation-content">
       <Link to="/">
