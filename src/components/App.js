@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {GlobalStyle} from './styles/GlobalStyle.js';
 
 import Header from './elements/Header';
@@ -8,16 +8,15 @@ import Movie from './Movie';
 import NotFound from './NotFound';
 
 const App = () => (
-  <div>
+  <Router>
     <Header />
-    <Router>
-      <Home path="/" />
-      {/* change for any movie with parameter  */}
-      <Movie path="/:movieId" />
-      <NotFound default />
-    </Router>
+    <Routes>
+      <Route path="/" elements={<Home />} />
+      <Route path="/:movieId" elements={<Movie />} />
+      <Route path="/*" element={<NotFound />} />
+    </Routes>
     <GlobalStyle />
-  </div>
+  </Router>
 );
 
 export default App;

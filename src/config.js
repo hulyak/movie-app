@@ -1,14 +1,20 @@
 // Configuration for TMDB
-// To see the latest configuration fetch it from https://api.themoviedb.org/3/configuration?api_key=019e8f375549e0bbd4a4191862ebc88f
+// To see the latest configuration fetch it from https://api.themoviedb.org/3/configuration?api_key=
 // Read more about the API here: https://developers.themoviedb.org/
 
 const API_URL = 'https://api.themoviedb.org/3/';
-const API_KEY = '1d052c390f545a17afb7e223d3d0205b';
+const API_KEY = 'process.env.REACT_APP_API_KEY';
 
 const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&query= `;
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}`;
 // const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${state.currentPage + 1} ` //give the other page
 // const popularEndpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${state.currentPage + 1}`
+
+// For login and voting
+const REQUEST_TOKEN_URL = `${API_URL}authentication/token/new?api_key=${API_KEY}`;
+const LOGIN_URL = `${API_URL}authentication/token/validate_with_login?api_key=${API_KEY}`;
+const SESSION_ID_URL = `${API_URL}authentication/session/new?api_key=${API_KEY}`;
+
 const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
 // Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE = 'w1280';
@@ -23,4 +29,7 @@ export {
   IMAGE_BASE_URL,
   BACKDROP_SIZE,
   POSTER_SIZE,
+  REQUEST_TOKEN_URL,
+  LOGIN_URL,
+  SESSION_ID_URL,
 };

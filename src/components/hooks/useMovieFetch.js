@@ -42,7 +42,7 @@ export const useMovieFetch = (movieId) => {
         fetchData();
       }
     },
-    [fetchData, movieId] //dependency array or infinite loop
+    [fetchData, movieId] // dependency array or infinite loop
   );
 
   useEffect(() => {
