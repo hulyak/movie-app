@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-import {StyledNavigation} from '../styles/StyledNavigation';
+import {StyledNavigation} from '../../styles/StyledNavigation';
 
 const Navigation = ({movie}) => (
   <StyledNavigation>

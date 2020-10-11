@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {StyledMovieThumb} from '../styles/StyledMovieThumb';
+import {Image} from '../../styles/StyledMovieThumb';
 
 const MovieThumb = ({image, movieId, clickable}) => (
-  <StyledMovieThumb>
+  <Image>
     {clickable ? (
       <Link to={`/${movieId}`}>
         <img className="clickable" src={image} alt="movie thumb" />
       </Link>
     ) : (
-      <img src={image} alt="movie thumb" /> //not clickable image
+      <img src={image} alt="movie thumb" /> // not clickable image
     )}
-  </StyledMovieThumb>
+  </Image>
 );
 
 MovieThumb.propTypes = {

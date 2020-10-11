@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
+// create a circle
 export const StyledSpinner = styled.div`
-  border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid #16d47b; /* Blue */
+  border: 5px solid var(--lightGrey);
+  border-top: 5px solid var(--medGrey);
   border-radius: 50%;
   width: 50px;
   height: 50px;

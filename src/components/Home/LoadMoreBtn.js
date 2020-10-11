@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyledLoadMoreBtn} from '../styles/StyledLoadMoreBtn';
+import {Wrapper} from '../../styles/StyledLoadMoreBtn';
 
 const LoadMoreBtn = ({text, callback}) => (
-  <StyledLoadMoreBtn type="button" onClick={callback}>
+  <Wrapper type="button" onClick={callback}>
     {text}
-  </StyledLoadMoreBtn>
+  </Wrapper>
 );
 
 LoadMoreBtn.propTypes = {
   text: PropTypes.string,
   callback: PropTypes.func,
 };
+
 export default LoadMoreBtn;
