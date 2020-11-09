@@ -1,15 +1,15 @@
 import React from 'react';
 import {useParams} from 'react-router-dom'
 // components
-import BreadCrumb from './components/BreadCrumb';
-import MovieInfo from './components/MovieInfo';
-import MovieInfoBar from './components/MovieInfoBar';
-import Actor from './components/Actor';
-import Grid from './components/Home/Grid';
-import Spinner from './components/Home/Spinner';
+import BreadCrumb from '../components/BreadCrumb';
+import MovieInfo from '../components/MovieInfo';
+import MovieInfoBar from '../components/MovieInfoBar';
+import Actor from '../components/Actor';
+import Grid from '../components/Home/Grid';
+import Spinner from '../components/Home/Spinner';
 
 // hooks
-import {useMovieFetch} from './hooks/useMovieFetch';
+import {useMovieFetch} from '../hooks/useMovieFetch';
 
 const Movie = () => {
 

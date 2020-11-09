@@ -21,7 +21,6 @@ export const useHomeFetch = () => {
     try {
       setError(false);
       setLoading(true);
-      // console.log(state);
       // await for data and json
       const movies = await API.fetchMovies(searchTerm, page);
 
@@ -89,3 +88,4 @@ export const useHomeFetch = () => {
 // }, [searchTerm, state]);
 
 // return [{state, loading, error, setSearchTerm}, fetchMovies];
+

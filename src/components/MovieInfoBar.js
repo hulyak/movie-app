@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
-import {calcTime, convertMoney} from '../../helpers';
+import {calcTime, convertMoney} from '../helpers';
 
 import {StyledMovieInfoBar} from '../styles/StyledMovieInfoBar';
 

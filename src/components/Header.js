@@ -9,7 +9,7 @@ import {
   Content,
   LogoImg,
   TMDBLogoImg,
-} from '../../styles/StyledHeader';
+} from '../styles/StyledHeader';
 
 const Header = () => (
   <Wrapper>

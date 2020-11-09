@@ -6,16 +6,16 @@ import {
   IMAGE_BASE_URL,
   POSTER_SIZE,
   BACKDROP_SIZE,
-} from '../config';
+} from '../config.js';
 
 import HeroImage from '../components/Home/HeroImage';
-import Grid from '../components/Grid.js';
+import Grid from '../components/Home/Grid.js';
 import MovieThumb from '../components/Home/MovieThumb';
 import SearchBar from '../components/Home/SearchBar';
-import LoadMoreBtn from './components/LoadMoreBtn';
+import LoadMoreBtn from '../components/Home/LoadMoreBtn';
 import Spinner from '../components/Home/Spinner';
 
-import NoImage from './images/no_image.jpg';
+import NoImage from '../images/no_image.jpg';
 
 // Custom Hook
 import {useHomeFetch} from '../hooks/useHomeFetch';
@@ -28,7 +28,6 @@ const Home = () => {
     setSearchTerm,
     setIsLoadingMore,
   } = useHomeFetch();
-  console.log(state);
 
   if (error) return <div>Something went wrong</div>;
 
@@ -65,9 +64,11 @@ const Home = () => {
           text={state.heroImage.overview}
         />
       ) : null}
+
       <SearchBar setSearchTerm={setSearchTerm} />
-      <Grid header={searchTerm ? 'Search Results' : 'Popular Movies'}>
-        {state.movies.map((movie) => (
+
+      <Grid header= 'Popular Movies'>
+        {state.results.map((movie) => (
           <MovieThumb
             key={movie.id}
             clickable
@@ -76,16 +77,17 @@ const Home = () => {
                 ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
                 : NoImage
             }
-            movieId={movie.id}
+           movieId={movie.id}
             movieName={movie.original_title}
-          />
-        ))}
+          /> 
+         ))}
       </Grid>
+
       {loading && <Spinner />}
       {state.page < state.total_pages && !loading && (
         <LoadMoreBtn text="Load More" callback={() => setIsLoadingMore(true)} />
       )}
-      app
+  
     </>
   );
 };
