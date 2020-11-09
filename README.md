@@ -16,3 +16,6 @@ npm install
 npm start
 ```
 
+## Login with TMDB Api
+
+## Vote on movies

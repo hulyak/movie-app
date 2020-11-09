@@ -1,26 +1,28 @@
 import React from 'react';
-
+import {useParams} from 'react-router-dom'
 // components
-import Navigation from './elements/Navigation';
-import MovieInfo from './elements/MovieInfo';
-import MovieInfoBar from './elements/MovieInfoBar';
-import Actor from './elements/Actor';
-import Grid from './elements/Grid';
-import Spinner from './elements/Spinner';
+import BreadCrumb from './components/BreadCrumb';
+import MovieInfo from './components/MovieInfo';
+import MovieInfoBar from './components/MovieInfoBar';
+import Actor from './components/Actor';
+import Grid from './components/Home/Grid';
+import Spinner from './components/Home/Spinner';
 
 // hooks
 import {useMovieFetch} from './hooks/useMovieFetch';
 
-const Movie = ({movieId}) => {
-  const [movie, loading, error] = useMovieFetch(movieId);
-  console.log(movie);
+const Movie = () => {
 
-  if (error) return <div>Something went wrong</div>;
+  const { movieId } = useParams;  // from react-router-dom variable for movieID
+
+  const {state : movie, loading, error}= useMovieFetch(movieId); // custom hook
+
+  if (error) return <div> Something went wrong </div>;
   if (loading) return <Spinner />;
 
   return (
     <>
-      <Navigation movie={movie.original_title} />
+      <BreadCrumb movieTitle={movie.original_title} />
       <MovieInfo movie={movie} />
       <MovieInfoBar
         time={movie.runtime}
@@ -35,4 +37,5 @@ const Movie = ({movieId}) => {
     </>
   );
 };
+
 export default Movie;

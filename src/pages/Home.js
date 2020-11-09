@@ -83,7 +83,7 @@ const Home = () => {
       </Grid>
       {loading && <Spinner />}
       {state.page < state.total_pages && !loading && (
-        <LoadMoreBtn text="Load More" callback={() => setIsLoadingMore(true)} />>
+        <LoadMoreBtn text="Load More" callback={() => setIsLoadingMore(true)} />
       )}
       app
     </>
