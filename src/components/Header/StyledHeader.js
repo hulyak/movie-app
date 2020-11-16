@@ -13,6 +13,12 @@ export const Content = styled.div`
   max-width: var(--maxWidth);
   padding: 20px 0px;
   margin: 0 auto;
+  color : var(--white);
+
+  a{
+    color: var(--white);
+    text-decoration: none;
+  }
 `;
 
 export const LogoImg = styled.img`
