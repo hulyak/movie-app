@@ -4,6 +4,7 @@ import NoImage from '../../images/no_image.jpg';
 import {IMAGE_BASE_URL, POSTER_SIZE} from '../../config';
 import Thumb from '../Thumb';
 import {Wrapper, Content, Text} from './StyledMovieInfo';
+import Rating from '../Rating';
 
 const MovieInfo = ({movie}) => (
   <Wrapper backdrop={movie.backdrop_path}>
@@ -31,6 +32,8 @@ const MovieInfo = ({movie}) => (
               <p key={director.credit_id}>{director.name}</p>
             ))}
           </div>
+          <p>Rate Movie</p>
+          <Rating />
         </div>
       </Text>
     </Content>
