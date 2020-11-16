@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 // create a circle
-export const StyledSpinner = styled.div`
+export const Spinner = styled.div`
   border: 5px solid var(--lightGrey);
   border-top: 5px solid var(--medGrey);
   border-radius: 50%;

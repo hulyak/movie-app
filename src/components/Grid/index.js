@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Wrapper, Content} from '../../styles/StyledGrid';
+import {Wrapper, Content} from './StyledGrid';
 
 // children is MovieThumb
 const Grid = ({header, children}) => (

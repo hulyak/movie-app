@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import searchIcon from '../../images/search-icon.svg';
 
-import { Wrapper, Content } from '../../styles/StyledSearchBar';
+import { Wrapper, Content } from './StyledSearchBar';
 
 const SearchBar = ({ setSearchTerm }) => {
   const [state, setState] = useState('');
@@ -31,7 +31,7 @@ const SearchBar = ({ setSearchTerm }) => {
         <input
           type="text"
           placeholder="Search movie"
-          onChange={(e) => setState(e.target.value)}
+          onChange={(e) => setState(e.currentTarget.value)}
           value={state}
         />
       </Content>

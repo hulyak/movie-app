@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Wrapper, Content, Text} from '../../styles/StyledHeroImage';
+import {Wrapper, Content, Text} from './StyledHeroImage';
 
 const HeroImage = ({image, title, text}) => (
   <Wrapper image={image}>

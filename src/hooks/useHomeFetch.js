@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect} from 'react';
 import API from '../API';
 
 const initialState = {
@@ -37,14 +37,18 @@ export const useHomeFetch = () => {
 
   // Initial and search
   useEffect(() => {
-    if (!isLoadingMore) return;
     setState(initialState);
+    fetchMovies(1, searchTerm);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    if (!isLoadingMore) return;
     // load the second page
     fetchMovies(state.page + 1, searchTerm);
     setIsLoadingMore(false);
   }, [searchTerm, isLoadingMore, state.page]);
 
-  return {state, loading, error, setSearchTerm, setIsLoadingMore};
+  return {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore};
 };
 
 // const isLoadMore = endpoint.search('page'); // if there is 't page query it will return -1, append to old movies
