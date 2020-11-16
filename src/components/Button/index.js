@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Wrapper} from './StyledLoadMoreBtn';
+import {Wrapper} from './StyledBtn';
 
 const LoadMoreBtn = ({text, callback}) => (
   <Wrapper type="button" onClick={callback}>
