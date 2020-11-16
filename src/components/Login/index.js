@@ -15,15 +15,9 @@ const Login = () => {
     const [_user, setUser]= useContext(Context);
     const navigate = useNavigate();
 
-    const handleInput = (e) => {
-        const {name, value} = e.currentTarget;
-
-        if(name === 'username') setUsername(value);
-        if(name === 'password') setPassword(value);
-    }
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = async () => {
         setError(false);
+        // success login
         try {
             const requestToken = await API.getRequestToken();
             const sessionId = await API.authenticate(requestToken, username, password);
@@ -31,10 +25,17 @@ const Login = () => {
             setUser({sessionId : sessionId.session_id , username});
 
             navigate('/'); // home page
-           
          }catch(err) {
             setError(true);
         }
+    }
+
+    const handleInput = (e) => {
+        const name = e.currentTarget.name;
+        const value = e.currentTarget.value;
+
+        if(name === 'username') setUsername(value);
+        if(name === 'password') setPassword(value);
     }
 
     return (

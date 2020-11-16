@@ -47,7 +47,7 @@ export const useHomeFetch = () => {
     }
   }
   setState(initialState);
-    fetchMovies(1, searchTerm);
+  fetchMovies(1, searchTerm);
 }, [searchTerm]);
 
 
@@ -63,7 +63,7 @@ export const useHomeFetch = () => {
   // Write to session storage
   useEffect(() => {
   if(!searchTerm) {
-    sessionStorage.setItem('homeState', JSON.stringify(state) )
+    sessionStorage.setItem('homeState', JSON.stringify(state))
   }
 }, [searchTerm, state]);
 
