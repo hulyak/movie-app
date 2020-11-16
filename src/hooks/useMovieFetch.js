@@ -1,5 +1,6 @@
 import {useState, useEffect, useCallback} from 'react';
 import API from '../API'
+import { isPersistedState } from '../helpers';
 
 export const useMovieFetch = (movieId) => {
   const [state, setState] = useState({});
@@ -31,30 +32,22 @@ export const useMovieFetch = (movieId) => {
     }
   }, [movieId]);
 
-
   useEffect(() => {
+ // only change when movieId changes
+    const sessionState = isPersistedState(movieId);
+
+    if (sessionState) {
+      setState(sessionState);
+      setLoading(false);
+      return; 
+    }
     fetchData();
   }, [movieId, fetchData])
 
- //only change when movieId changes
-
-  // useEffect(
-  //   () => {
-  //     console.log('grabbing from local storage');
-  //     if (localStorage[movieId]) {
-  //       setState(JSON.parse(localStorage[movieId]));
-  //       setLoading(false);
-  //     } else {
-  //       console.log('grabbing from api');
-  //       fetchData();
-  //     }
-  //   },
-  //   [fetchData, movieId] // dependency array or infinite loop
-  // );
-
-  // useEffect(() => {
-  //   localStorage.setItem(movieId, JSON.stringify(state));
-  // }, [movieId, state]);
+// Write to session storage
+  useEffect(() => {
+    sessionStorage.setItem(movieId, JSON.stringify(state))
+  }, [movieId, state]);
 
   return {state, loading, error};
 };

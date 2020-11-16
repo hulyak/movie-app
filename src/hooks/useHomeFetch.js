@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import API from '../API';
+import { isPersistedState } from '../helpers';
 
 const initialState = {
   page: 0,
@@ -37,10 +38,20 @@ export const useHomeFetch = () => {
 
   // Initial and search
   useEffect(() => {
-    setState(initialState);
+    // first check the session storage
+  if (!searchTerm) {
+    const sessionState = isPersistedState('homeState'); // homestate will be passed to session storage
+    if(sessionState){
+      setState(sessionState);
+      return;
+    }
+  }
+  setState(initialState);
     fetchMovies(1, searchTerm);
-  }, [searchTerm]);
+}, [searchTerm]);
 
+
+// Load more
   useEffect(() => {
     if (!isLoadingMore) return;
     // load the second page
@@ -48,48 +59,16 @@ export const useHomeFetch = () => {
     setIsLoadingMore(false);
   }, [searchTerm, isLoadingMore, state.page]);
 
+
+  // Write to session storage
+  useEffect(() => {
+  if(!searchTerm) {
+    sessionStorage.setItem('homeState', JSON.stringify(state) )
+  }
+}, [searchTerm, state]);
+
   return {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore};
 };
 
-// const isLoadMore = endpoint.search('page'); // if there is 't page query it will return -1, append to old movies
-// try {
-//   // wait for fetching data and to parse into json data
-//   const result = await (await fetch(endpoint)).json();
-//   // console.log(result);
-//   setState((prev) => ({
-//     ...prev,
-//     movies:
-//       isLoadMore !== -1
-//         ? [...prev.movies, ...result.results] // append result to the old movies
-//         : [...result.results], // results property from api
-//     heroImage: prev.heroImage || result.results[0], // first check if we have already heroImage don't replace
-//     currentPage: result.page,
-//     totalPages: result.total_pages,
-//   }));
-// } catch (err) {
-//   setError(true);
-//   console.log(err);
-// }
-// setLoading(false);
 
-// TRIGGER FETCH MOVIES, this will trigger every time we run, we need only when we start the app and mount the app
-// useEffect(() => {
-//   if (sessionStorage.homeState) {
-//     // console.log('grabbing from session storage');
-//     setState(JSON.parse(sessionStorage.homeState));
-//     setLoading(false);
-//   } else {
-//     // console.log('grabbing from api');
-//     fetchMovies(POPULAR_BASE_URL);
-//   }
-// }, []); // dependency array
-
-// useEffect(() => {
-//   if (!searchTerm) {
-//     console.log('session storage');
-//     sessionStorage.setItem('homeState', JSON.stringify(state));
-//   }
-// }, [searchTerm, state]);
-
-// return [{state, loading, error, setSearchTerm}, fetchMovies];
 

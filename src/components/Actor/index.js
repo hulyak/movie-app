@@ -1,30 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import NoImage from '../images/no_image.jpg';
+import { Wrapper, Image } from './StyledActor';
 
-import { IMAGE_BASE_URL, POSTER_SIZE } from '../config';
-import { StyledActor } from './StyledActor';
-
-const Actor = ({ actor }) => (
-  <StyledActor>
-    <img
-      src={
-        actor.profile_path ? (
-          `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-        ) : (
-          NoImage
-        )
-      }
-      alt="actor thumb"
-    />
-    <span className="actor-name">{actor.name}</span>
-    <span className="actor-character">{actor.character}</span>
-  </StyledActor>
+const Actor = ({ name, character, imageUrl }) => (
+  <Wrapper>
+    <Image src={imageUrl} alt="actor-thumb" />
+    <h3>{name}</h3>
+    <p>{character}</p>
+  </Wrapper>
 );
 
 Actor.propTypes = {
-  actor: PropTypes.object,
+  name: PropTypes.string,
+  character: PropTypes.string,
+  imageUrl: PropTypes.string
 };
 
 export default Actor;
