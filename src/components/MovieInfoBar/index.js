@@ -4,7 +4,6 @@ import {calcTime, convertMoney} from '../../helpers';
 import {Wrapper, Content} from './StyledMovieInfoBar';
 
 const MovieInfoBar = ({time, budget, revenue}) => (
-  // <FontAwesome className="fa-time" name="clock-o" size="2x" />
   <Wrapper>
     <Content>
       <div className='column'>

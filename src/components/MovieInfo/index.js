@@ -27,7 +27,6 @@ const MovieInfo = ({movie}) => (
           </div>
           <div className="director">
             <h3>DIRECTOR{movie.directors.length > 1 ? 's' : ''} </h3>
-            {/* director section is array,  get the id */}
             {movie.directors.map((director) => (
               <p key={director.credit_id}>{director.name}</p>
             ))}

@@ -24,7 +24,7 @@ const Home = () => {
     setIsLoadingMore
   } = useHomeFetch();
 
-  console.log(state);
+  // console.log(state);
 
   if (error) return <div>Something went wrong ...</div>;
 
